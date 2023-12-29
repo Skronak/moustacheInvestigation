@@ -1,7 +1,7 @@
 {
   "name": "pmea",
   "version": "0.1.0",
-  "homepage": "https://Skronak.github.io/react-mobileApp",
+  "homepage": "https://Skronak.github.io/Boardgame-PMEA-react",
   "private": true,
   "dependencies": {
     "bootstrap": "^5.2.2",
