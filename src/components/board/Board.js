@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Board(props) {
+export default function Board(props) {
 
     return (
         <div className={'front'}>
@@ -10,5 +10,3 @@ function Board(props) {
         </div>
     );
 }
-
-export default Board;
