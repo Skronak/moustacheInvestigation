@@ -2,6 +2,7 @@ This project is the recreation of a board game called Petit Meurtre Entre Amis a
 The game use a seed to randomize it behaviour that need to be shared among all participants
 
 The game is meant to be played on mobile. UI wasn't tested on a full screen.
+
 Rules:
 X players launch the game using the same seed.
 1 player choose the inspector roles, the others choose the witness role. Among the witnesses one will be designated by the app as the culprit.
