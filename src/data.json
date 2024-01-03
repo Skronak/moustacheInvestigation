@@ -128,7 +128,7 @@
 },{
     "key": "Le jackpot",
     "date":"Mardi 9 janvier",
-    "label":"Un aveugle dépouillé de son billet gagnant pendant qu'il offrait une journée générale",
+    "label":"Un aveugle dépouillé de son billet gagnant pendant qu'il offrait une tournée générale",
     "guilty":5,
     "suspects":[
         {"role":"Barman",
@@ -164,7 +164,7 @@
         {"role":"Pâtissier",
         "context": "C'est quand même lui qui a fait le gateau"},
         {"role":"Convive à la reception",
-            "context": "N'a pas assisté à la reception sans donner de raison particulière"}
+            "context": "A annulé sa participation à la reception au dernier moment sans donner de raison"}
     ],
     "wordsI":["ingrédient","préalable","gastronomie","querelle","coin","consternation"],
     "wordsG":["novice","prévis","cuisinier","vengeance","cache","indifférence"]

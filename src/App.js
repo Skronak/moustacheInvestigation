@@ -98,12 +98,12 @@ export default function App() {
                 ) : (
                     <form>
                         <div className={"bloc"}>
-                            <div>Clé (Unique à chaque partie)</div>
+                            <div>Clé (Commun à tous les joueurs, permet de désigner aléatoirement le criminel)</div>
                             <input type="text" className="form-control" onChange={e => setSeed(e.target.value)} min='0'
                                    value={seed}/>
                         </div>
                         <div className={"bloc"}>
-                            <div>Nombre de joueurs</div>
+                            <div>Nombre de joueurs total</div>
                             <input type="number" className="form-control"
                                    onChange={e => setNbPlayers(e.target.value - 1)}
                                    min='0'
@@ -129,7 +129,7 @@ export default function App() {
                             </div>
                         </div>
                         <div className={"bloc"}>
-                            <div>Affaire selectionnée ({[...cases.keys()].length})</div>
+                            <div>Affaire ({[...cases.keys()].length})</div>
                             <select id='caseId' className="form-select" name="case" size={5} value={selectedCase}
                                     onChange={(e => setSelectedCase(e.target.value))}>
                                 {[...cases.keys()].map((e, i) => <option value={e}>{i + 1} - {e}</option>)}
