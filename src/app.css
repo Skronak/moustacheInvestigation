@@ -194,7 +194,6 @@ list-group-item {
 .front {
     backface-visibility: hidden;
     transform: rotateX(0deg);
-    position: absolute;
     margin-right: 5%;
 }
 
