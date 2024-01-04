@@ -70,6 +70,7 @@ export default function App() {
             setFlipped(!isFlipped);
         }
     }
+
     return (
         <div onClick={() => flip()}>
             <AnimatedBackground/>
@@ -98,12 +99,12 @@ export default function App() {
                 ) : (
                     <form>
                         <div className={"bloc"}>
-                            <div>Clé (Commun à tous les joueurs, permet de désigner aléatoirement le criminel)</div>
+                            <div>Clé (Commun à tous les joueurs, détermine le coupable</div>
                             <input type="text" className="form-control" onChange={e => setSeed(e.target.value)} min='0'
                                    value={seed}/>
                         </div>
                         <div className={"bloc"}>
-                            <div>Nombre de joueurs total</div>
+                            <div>Nombre de joueurs</div>
                             <input type="number" className="form-control"
                                    onChange={e => setNbPlayers(e.target.value - 1)}
                                    min='0'
@@ -113,20 +114,23 @@ export default function App() {
                             <div className="divider"></div>
                         </div>
                         <div className={"bloc"}>
+                            <span>Incarner le détective</span>
                             <label className="toggle">
                                 <input className="toggle-checkbox" type="checkbox" onChange={handleChange}/>
                                 <div className="toggle-switch"></div>
-                                <span
-                                    className="toggle-label"> {isDetective ? "Vous êtes le détective" : "Vous n'êtes pas le détective"}</span>
                             </label>
                         </div>
                         <div className={"bloc"}>
                             <div id="collapse" className={isDetective ? "hide" : "show"}>
                                 <div>Vous êtes le témoin n°</div>
-                                <input type="number" disabled={isDetective} className="form-control"
+                                <input type="tel" disabled={isDetective} className="form-control"
+                                       pattern="^-?[0-9]\d*\.?\d*$"
                                        onChange={e => setIdPlayer(+e.target.value > +nbPlayers ? nbPlayers : e.target.value)}
-                                       min='0' value={idPlayer}/>
+                                       min='1' value={+idPlayer}/>
                             </div>
+                        </div>
+                        <div className={"bloc"}>
+                            <div className="divider"></div>
                         </div>
                         <div className={"bloc"}>
                             <div>Affaire ({[...cases.keys()].length})</div>
