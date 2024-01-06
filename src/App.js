@@ -74,7 +74,7 @@ export default function App() {
     return (
         <div onClick={() => flip()}>
             <AnimatedBackground/>
-            {!isGameVisible ? <p className={"mainTitle"}>Petits meurtres entre amis - Mobile</p> : null}
+            {!isGameVisible ? <p className={"mainTitle"}>Les enquêtes de Moustache</p> : null}
             <div className={`container fiche ${isFlipped && isGameVisible ? "flip" : ""}`}>
 
                 {isGameVisible ? (
@@ -98,6 +98,11 @@ export default function App() {
                     </>
                 ) : (
                     <form>
+                        <div className={'align-left'}>
+                        <input id='help-button' type="button" className="btn btn-success"
+                               onClick={(e) => startGame(e)}
+                               value="COMMENT JOUER"/>
+                        </div>
                         <div className={"bloc"}>
                             <div>Clé (Commun à tous les joueurs, détermine le coupable</div>
                             <input type="text" className="form-control" onChange={e => setSeed(e.target.value)} min='0'
@@ -115,7 +120,7 @@ export default function App() {
                         </div>
                         <div className={"bloc"}>
                             <span>Incarner le détective</span>
-                            <label className="toggle">
+                            <label className="toggle detective-toggle">
                                 <input className="toggle-checkbox" type="checkbox" onChange={handleChange}/>
                                 <div className="toggle-switch"></div>
                             </label>

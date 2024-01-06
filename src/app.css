@@ -22,7 +22,11 @@ body {
     padding-top: 5%;
 }
 
-#start-button, #end-button {
+.detective-toggle {
+    padding-left: 1em;
+}
+
+#start-button, #end-button, #help-button {
     width: 100%;
     padding: 0;
     height: 4em;
@@ -38,6 +42,16 @@ body {
     background-color: black;
 }
 
+#help-button {
+    background-color: purple;
+    width: 45%;
+    height: 3em;
+}
+
+.align-left {
+    text-align: end;
+}
+
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -51,7 +65,12 @@ body {
 }
 
 #caseId {
-    height: 25vh
+    height: 100%;
+}
+
+#help {
+    background-color: purple;
+    height: 4em;
 }
 
 .mainTitle {
@@ -195,6 +214,7 @@ list-group-item {
     backface-visibility: hidden;
     transform: rotateX(0deg);
     margin-right: 5%;
+    position: absolute;
 }
 
 .back {
@@ -279,7 +299,6 @@ img {
 
 .case-words {
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-    margin: 5%;
     text-align: center;
     list-style-type: none;
 }
