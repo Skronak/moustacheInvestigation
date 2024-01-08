@@ -9,6 +9,7 @@ import detective from "./img/avatar-detective.png";
 import criminal from "./img/avatar-criminal.png";
 import innocent from "./img/avatar-innocent.png";
 import AnimatedBackground from "./components/animatedBackground/AnimatedBackground.js";
+import ModalWrapper from "./components/modal/ModalWrapper";
 
 export default function App() {
     const [isGameVisible, toggleGameVisible] = useState(false);
@@ -20,6 +21,7 @@ export default function App() {
     const cases = new Map(data.map(obj => [obj.key, obj]));
     const [selectedCase, setSelectedCase] = useState(data[0].key);
     const [isFlipped, setFlipped] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
     const handleChange = (event) => {
         toggleIsDetective(event.target.checked);
@@ -49,8 +51,7 @@ export default function App() {
 
         if (+nbPlayers > (casedata.suspects.length)) {
             createRoles(casedata, lastSuspect);
-        }
-        ;
+        };
 
         toggleScreen(e);
     }
@@ -73,10 +74,11 @@ export default function App() {
 
     return (
         <div onClick={() => flip()}>
-            <AnimatedBackground/>
+
+            {/*<AnimatedBackground/>*/}
+
             {!isGameVisible ? <p className={"mainTitle"}>Les enquêtes de Moustache</p> : null}
             <div className={`container fiche ${isFlipped && isGameVisible ? "flip" : ""}`}>
-
                 {isGameVisible ? (
                     <>
                         <Board data={cases.get(selectedCase)}>
@@ -100,7 +102,7 @@ export default function App() {
                     <form>
                         <div className={'align-left'}>
                         <input id='help-button' type="button" className="btn btn-success"
-                               onClick={(e) => startGame(e)}
+                               onClick={(e) => setOpenModal(true)}
                                value="COMMENT JOUER"/>
                         </div>
                         <div className={"bloc"}>
@@ -109,7 +111,7 @@ export default function App() {
                                    value={seed}/>
                         </div>
                         <div className={"bloc"}>
-                            <div>Nombre de joueurs</div>
+                            <div title={'nombre de joueurs'}>Nombre de joueurs</div>
                             <input type="number" className="form-control"
                                    onChange={e => setNbPlayers(e.target.value - 1)}
                                    min='0'
@@ -152,6 +154,16 @@ export default function App() {
                     </form>
                 )}
             </div>
+
+            {openModal? (
+                <ModalWrapper title={'Guide de jeu'} onClose={()=> setOpenModal(false)}>
+                    <div>
+                        <p>Principe : L'Inspecteur devra identifier les mots qui ressortent fréquemment dans les différents discours. Si un joueur n'a pas employé les mêmes mots que les autres, il s'agit peut-être du Coupable ! (car ce dernier n'a pas la même liste de mots que les autres joueurs).</p>
+                        <p>Lancement de la partie</p>
+                        <p>Tous les joueurs choisissent la même clé et la renseigne dans l'application. La clé permet de déterminer le coupable et de rejouer les mêmes enquêtes avec une clé différente</p>
+                    </div>
+                </ModalWrapper>): null
+            }
         </div>
     )
 }
