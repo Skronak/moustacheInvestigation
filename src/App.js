@@ -75,7 +75,7 @@ export default function App() {
     return (
         <div onClick={() => flip()}>
 
-            {/*<AnimatedBackground/>*/}
+            <AnimatedBackground/>
 
             {!isGameVisible ? <p className={"mainTitle"}>Les enquêtes de Moustache</p> : null}
             <div className={`container fiche ${isFlipped && isGameVisible ? "flip" : ""}`}>
