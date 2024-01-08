@@ -316,3 +316,17 @@ img {
     position: absolute;
     color: white;
 }
+
+div[title]:hover::after {
+    content: attr(title);
+    padding: 4px 8px;
+    color: #333;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    white-space: nowrap;
+    z-index: 20;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px #222;
+    background-image: linear-gradient(#eeeeee, #cccccc);
+}
