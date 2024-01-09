@@ -10,6 +10,7 @@ import criminal from "./img/avatar-criminal.png";
 import innocent from "./img/avatar-innocent.png";
 import AnimatedBackground from "./components/animatedBackground/AnimatedBackground.js";
 import ModalWrapper from "./components/modal/ModalWrapper";
+import {Button, Tooltip} from "@mui/material";
 
 export default function App() {
     const [isGameVisible, toggleGameVisible] = useState(false);
@@ -106,7 +107,9 @@ export default function App() {
                                value="COMMENT JOUER"/>
                         </div>
                         <div className={"bloc"}>
-                            <div>Clé (Commun à tous les joueurs, détermine le coupable</div>
+                            <div>Clé</div><Tooltip title="Some message" enterTouchDelay={0}>
+                            <Button>Some message</Button>
+                        </Tooltip>
                             <input type="text" className="form-control" onChange={e => setSeed(e.target.value)} min='0'
                                    value={seed}/>
                         </div>
@@ -157,6 +160,7 @@ export default function App() {
 
             {openModal? (
                 <ModalWrapper title={'Guide de jeu'} onClose={()=> setOpenModal(false)}>
+
                     <div>
                         <p>Principe : L'Inspecteur devra identifier les mots qui ressortent fréquemment dans les différents discours. Si un joueur n'a pas employé les mêmes mots que les autres, il s'agit peut-être du Coupable ! (car ce dernier n'a pas la même liste de mots que les autres joueurs).</p>
                         <p>Lancement de la partie</p>
