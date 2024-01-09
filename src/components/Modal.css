@@ -12,11 +12,12 @@ body.active-modal {
 .modal, .overlay {
     width: 100vw;
     height: 100vh;
-    top: 0;
+    top: 2em;
     left: 0;
     right: 0;
     bottom: 0;
     position: fixed;
+    color: black;
 }
 
 .overlay {
@@ -31,14 +32,42 @@ body.active-modal {
     background: #f1f1f1;
     padding: 14px 28px;
     border-radius: 3px;
-    max-width: 600px;
-    min-width: 300px;
+    width: 70%;
 }
 
-.close-modal {
+.modal-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    grid-gap: .5em;
+    border-top-left-radius: .3125em;
+    border-top-right-radius: .3125em;
+    padding: 0 .5em;
+    color: black;
+}
+
+.modal-body {
+    border-top: none;
+    border-bottom-left-radius: .3125em;
+    border-bottom-right-radius: .3125em;
+    background-color: #fff;
+    padding: .5em;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-underlay {
     position: absolute;
-    right: 2em;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(50,50,50,.5);
+}
+.close-modal {
     padding: 0;
+    width: 2em;
 }
 
 table, th, td {
