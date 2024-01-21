@@ -1,0 +1,13 @@
+.tooltip {
+    & body.active-modal {
+        position: unset;
+    }
+
+    &.modal-content {
+        position: unset;
+    }
+
+    &.modal-content {
+        translate: unset;
+    }
+}
