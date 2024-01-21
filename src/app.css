@@ -88,6 +88,7 @@ body {
     text-align: center;
     font-weight: 700;
     font-size: 1.2em;
+    margin-top: 1em;
 }
 
 .case-context {
@@ -223,7 +224,22 @@ list-group-item {
     backface-visibility: hidden;
 }
 
-img {
+.label-with-tooltip {
+    display: block ruby;
+}
+
+button .tooltip {
+    border-radius: 20px 20px 20px 20px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    min-width: 2.5em;
+    margin-left: 1em;
+    height: 2em;
+}
+
+.avatar {
     width: 100%;
     height: 100%;
     padding-top: 50%;
@@ -317,6 +333,31 @@ img {
     color: white;
 }
 
+.button-icon {
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: text-bottom;
+    background-color: purple;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.tooltip-icon {
+    width: 1.5em  !important;
+    height: 1.5em !important;
+    color: white !important;
+    vertical-align: text-bottom !important;
+    /*background-color: purple !important;*/
+    border-radius: 1em !important;
+    cursor: pointer !important;
+    margin-left: 1em !important;
+    font-size: larger!important;
+}
+
+.affaire-bloc-title {
+    padding-right: 1em;
+}
+
 div[title]:hover::after {
     content: attr(title);
     padding: 4px 8px;
@@ -329,4 +370,38 @@ div[title]:hover::after {
     border-radius: 5px;
     box-shadow: 0px 0px 4px #222;
     background-image: linear-gradient(#eeeeee, #cccccc);
+}
+
+.logo {
+    width: 5em;
+    height: 5em;
+}
+
+logo > g {
+    animation: col 15s linear infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear
+
+}
+
+@keyframes col {
+    0%,20% {
+        fill:red;
+    }
+    21% {
+        fill:blue;
+    }
+    50% {
+        fill:yellow;
+    }
+}
+
+@keyframes anim {
+    100% {
+        stroke-dashoffset: -300;
+    }
+}
+
+#pth {
+    animation: anim 1s linear infinite;
 }

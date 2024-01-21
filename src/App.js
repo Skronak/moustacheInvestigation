@@ -8,9 +8,11 @@ import seedrandom from 'seedrandom';
 import detective from "./img/avatar-detective.png";
 import criminal from "./img/avatar-criminal.png";
 import innocent from "./img/avatar-innocent.png";
+import preview from "./img/preview.svg";
 import AnimatedBackground from "./components/animatedBackground/AnimatedBackground.js";
 import ModalWrapper from "./components/modal/ModalWrapper";
 import {Button, Tooltip} from "@mui/material";
+import PreviewModal from "./components/previewModal/PreviewModal";
 
 export default function App() {
     const [isGameVisible, toggleGameVisible] = useState(false);
@@ -23,7 +25,7 @@ export default function App() {
     const [selectedCase, setSelectedCase] = useState(data[0].key);
     const [isFlipped, setFlipped] = useState(false);
     const [openModal, setOpenModal] = useState(false);
-
+    const [openPreview, setOpenPreview] = useState(false);
     const handleChange = (event) => {
         toggleIsDetective(event.target.checked);
     };
@@ -95,7 +97,7 @@ export default function App() {
                         </Board>
                         <div className="back">
                             <p className={"flip-label"}>{isDetective ? "DETECTIVE" : +idPlayer === +idGuilty ? "COUPABLE" : "INNOCENT"}</p>
-                            <img alt="avatar"
+                            <img className={'avatar'} alt="avatar"
                                  src={isDetective ? detective : +idPlayer === +idGuilty ? criminal : innocent}/>
                         </div>
                     </>
@@ -106,15 +108,24 @@ export default function App() {
                                onClick={(e) => setOpenModal(true)}
                                value="COMMENT JOUER"/>
                         </div>
+
                         <div className={"bloc"}>
-                            <div>Clé</div><Tooltip title="Some message" enterTouchDelay={0}>
-                            <Button>Some message</Button>
-                        </Tooltip>
+                            <div className={'label-with-tooltip'}>
+                                <div title={'Clé'}>Clé</div>
+                                <Tooltip title="Le coupable sera determiné à partir de cette clé. Elle doit  être commune à tous les joueurs. A changer si vous souhaiter rejouer la même affaire" enterTouchDelay={0}>
+                                        <Button className="tooltip-icon">?</Button>
+                                </Tooltip>
+                            </div>
                             <input type="text" className="form-control" onChange={e => setSeed(e.target.value)} min='0'
                                    value={seed}/>
                         </div>
                         <div className={"bloc"}>
-                            <div title={'nombre de joueurs'}>Nombre de joueurs</div>
+                            <div className={'label-with-tooltip'}>
+                                <div title={'nombre de joueurs'}>Nombre de joueurs</div>
+                                <Tooltip title="Nombre total de joueur incluant le détective" enterTouchDelay={0}>
+                                    <Button className="tooltip-icon">?</Button>
+                                </Tooltip>
+                            </div>
                             <input type="number" className="form-control"
                                    onChange={e => setNbPlayers(e.target.value - 1)}
                                    min='0'
@@ -132,7 +143,12 @@ export default function App() {
                         </div>
                         <div className={"bloc"}>
                             <div id="collapse" className={isDetective ? "hide" : "show"}>
+                                <div className={'label-with-tooltip'}>
                                 <div>Vous êtes le témoin n°</div>
+                                    <Tooltip title={`Chaque témoin doit s'attribuer un numéro unique entre 1 et ${nbPlayers}`} enterTouchDelay={0}>
+                                        <Button className="tooltip-icon">?</Button>
+                                    </Tooltip>
+                                </div>
                                 <input type="tel" disabled={isDetective} className="form-control"
                                        pattern="^-?[0-9]\d*\.?\d*$"
                                        onChange={e => setIdPlayer(+e.target.value > +nbPlayers ? nbPlayers : e.target.value)}
@@ -143,7 +159,10 @@ export default function App() {
                             <div className="divider"></div>
                         </div>
                         <div className={"bloc"}>
-                            <div>Affaire ({[...cases.keys()].length})</div>
+                            <div>
+                                <span className={'affaire-bloc-title'}>Affaire ({[...cases.keys()].length})</span>
+                                <img className={'button-icon'} alt='apercu de l"affaire' src={preview} onClick={()=>setOpenPreview(true)}/>
+                            </div>
                             <select id='caseId' className="form-select" name="case" size={5} value={selectedCase}
                                     onChange={(e => setSelectedCase(e.target.value))}>
                                 {[...cases.keys()].map((e, i) => <option value={e}>{i + 1} - {e}</option>)}
@@ -166,8 +185,10 @@ export default function App() {
                         <p>Lancement de la partie</p>
                         <p>Tous les joueurs choisissent la même clé et la renseigne dans l'application. La clé permet de déterminer le coupable et de rejouer les mêmes enquêtes avec une clé différente</p>
                     </div>
-                </ModalWrapper>): null
-            }
+                </ModalWrapper>): null}
+            {openPreview ? (
+                <PreviewModal onClose={()=> setOpenPreview(false)} case={cases.get(selectedCase)}/>
+            ) : null}
         </div>
     )
 }

@@ -8,9 +8,10 @@ export default function ModalWrapper(props) {
             <div className="modal active-modal">
                 <div className="modal-content" onClick={(e)=>e.stopPropagation()}>
                     <div className="modal-header">
-                        <button className="" onClick={props.onClose}>Comment jouer</button>
-                        <button className="" onClick={props.onClose}>Parametrage</button>
-                        <button className="close-modal" onClick={props.onClose}>X</button>
+                        {props.title}
+                        {!props.hideClose && (
+                            <button className="close-modal" onClick={props.onClose}>X</button>
+                        )}
                     </div>
                     <div className="modal-body">
                         {props.children}
