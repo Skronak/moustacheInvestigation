@@ -1,5 +1,3 @@
-Mobile only 
-
 This project is inspired by a board game called Petit Meurtre Entre Amis.
 It is aimed at being played on a browser without the need of a running server.
 The game use a seed to randomize it behaviour that need to be shared among all participants
