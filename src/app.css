@@ -225,7 +225,8 @@ list-group-item {
 }
 
 .label-with-tooltip {
-    display: block ruby;
+    display: flex;
+    flex-direction: row;
 }
 
 button .tooltip {
