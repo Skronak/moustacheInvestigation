@@ -1,3 +1,4 @@
+Mobile only 
 
 This project is inspired by a board game called Petit Meurtre Entre Amis.
 It is aimed at being played on a browser without the need of a running server.
@@ -13,7 +14,7 @@ The inspector will then proceed to interrogate each player for 2min, each player
 The inspector can interrogate each witness 2 times. 
 At the end of the interrogations, the inspector will have to guess the culprit.
 
-The app is hosted on a github io page: (https://skronak.github.io/Boardgame-PMEA-react/)
+DEMO LIVE: [https://skronak.github.io/moustacheInvestigation]
 
 # Start the application
 ### `npm start`
